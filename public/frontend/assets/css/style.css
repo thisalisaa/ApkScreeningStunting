@@ -1,0 +1,199 @@
+body {
+    background-color: #edfafc;
+}
+
+.left-sidebar {
+    background-color: #48ABF7;
+}
+
+.sidebar-nav ul {
+    padding-left: 0;
+}
+
+.sidebar-item .sidebar-link {
+    padding-left: 3px !important;
+    display: flex;
+    align-items: center;
+    color: white !important;
+    font-size: 1.1rem;
+    padding: 10px 15px;
+}
+
+.sidebar-item .sidebar-link i {
+    font-size: 1.2rem;
+    width: 20px; 
+    text-align: center; 
+    margin-right: 10px;
+}
+
+.sidebar-item span {
+    margin-left: 10px; 
+}
+
+.sidebar-item .sidebar-link.active {
+    color: #48ABF7 !important;
+    background-color: #ffffff !important;
+    border-radius: 5px;
+}
+
+.sidebar-nav .sidebar-item {
+    margin-bottom: 10px;
+}
+
+.brand-logo {
+    margin-bottom: 70px;
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.dropdown-item {
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #929292;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #000;
+}
+
+.dropdown-item i {
+    width: 20px;
+    text-align: center;
+    margin-right: 8px;
+}
+
+.btn-custom-normal {
+    display: inline-block; /* Agar elemen <a> bisa di-styling seperti tombol */
+    background-color: #92C755; /* Warna hijau cerah */
+    color: white; /* Warna teks putih */
+    padding: 8px 20px; /* Padding atas-bawah 8px, kiri-kanan 20px */
+    font-size: 14px; /* Ukuran font */
+    border: none; /* Hilangkan border */
+    border-radius: 5px; /* Sudut melengkung */
+    text-align: center; /* Teks di tengah */
+    text-decoration: none; /* Hilangkan underline default pada <a> */
+    cursor: pointer; /* Ubah kursor saat dihover */
+    width: 120px; /* Lebar tombol */
+}
+
+.btn-custom-normal:hover {
+    background-color: #7DAF4A; 
+    color: white;
+}
+
+.btn-custom-stunting {
+    display: inline-block; /* Agar elemen <a> bisa di-styling seperti tombol */
+    background-color: #FFB80F; /* Warna oranye */
+    color: white; /* Warna teks putih */
+    padding: 8px 20px; /* Padding atas-bawah 8px, kiri-kanan 20px */
+    font-size: 14px; /* Ukuran font */
+    border: none; /* Hilangkan border */
+    border-radius: 5px; /* Sudut melengkung */
+    text-align: center; /* Teks di tengah */
+    text-decoration: none; /* Hilangkan underline default pada <a> */
+    cursor: pointer; /* Ubah kursor saat dihover */
+    width: 120px; /* Lebar tombol */
+    transition: background-color 0.3s ease; /* Efek transisi saat dihover */
+}
+
+.btn-custom-stunting:hover {
+    background-color: #E0A00D; /* Warna oranye lebih gelap saat dihover */
+    color: white;
+}
+
+.btn-custom-sangatstunting {
+    display: inline-block; /* Agar elemen <a> bisa di-styling seperti tombol */
+    background-color: #F55145; /* Warna merah */
+    color: white; /* Warna teks putih */
+    padding: 8px 20px; /* Padding atas-bawah 8px, kiri-kanan 20px */
+    font-size: 14px; /* Ukuran font */
+    border: none; /* Hilangkan border */
+    border-radius: 5px; /* Sudut melengkung */
+    text-align: center; /* Teks di tengah */
+    text-decoration: none; /* Hilangkan underline default pada <a> */
+    cursor: pointer; /* Ubah kursor saat dihover */
+    width: 120px; /* Lebar tombol */
+    transition: background-color 0.3s ease; /* Efek transisi saat dihover */
+}
+
+.btn-custom-sangatstunting:hover {
+    background-color: #D4473C; 
+    color: white;
+}
+
+/* Style untuk breadcrumb */
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "/";
+    padding: 0 0.3rem;
+    color: #a5a5a5; 
+}
+
+.breadcrumb-item a {
+    color: #0d6efd; 
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: #a5a5a5; 
+}
+
+.breadcrumb-item a i {
+    color: #0d6efd;
+    font-size: 1.2rem; 
+
+.sidebar-item.active {
+    background-color: #ffffff; 
+    border-radius: 5px; 
+}
+
+.sidebar-item.active a {
+    color: #48ABF7 !important;
+    font-weight: bold;
+}
+
+.stepper-nav-item {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #6c757d;
+    cursor: pointer;
+    position: relative;
+}
+
+.stepper-nav-item.active {
+    color: #0d6efd;
+    font-weight: bold;
+}
+
+.stepper-nav-item i {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
