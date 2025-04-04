@@ -140,7 +140,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-info" data-bs-dismiss="modal">CANCEL</button>
-                    <button type="button" class="btn btn-primary">SIMPAN</button>
+                    <button type="button" class="btn btn-success">SIMPAN</button>
                 </div>
             </div>
         </div>

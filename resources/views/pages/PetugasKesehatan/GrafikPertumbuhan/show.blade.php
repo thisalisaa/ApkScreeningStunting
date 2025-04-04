@@ -3,7 +3,7 @@
 @section('title', 'APK-Screening')
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('petugas.grafikpertumbuhan') }}">Grafik Pertumbuhan</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('petugas.grafik-pertumbuhan') }}">Grafik Pertumbuhan</a></li>
     <li class="breadcrumb-item active" aria-current="page">Detail Grafik Pertumbuhan</li>
 @endsection
 

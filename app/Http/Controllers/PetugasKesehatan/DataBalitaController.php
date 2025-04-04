@@ -17,8 +17,8 @@ class DataBalitaController extends Controller
         return view('pages.PetugasKesehatan.DataBalita.create');
     }
 
-    public function detail()
+    public function show()
     {
-        return view('pages.PetugasKesehatan.DataBalita.detail');
+        return view('pages.PetugasKesehatan.DataBalita.show');
     }
 }

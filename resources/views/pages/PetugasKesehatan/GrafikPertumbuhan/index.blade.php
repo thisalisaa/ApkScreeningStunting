@@ -64,7 +64,7 @@
                         <td>-0.3</td>
                         <td>0.2</td>
                         <td>
-                            <a href="{{ route('petugas.grafikpertumbuhan.detail') }}" class="btn-custom-normal">
+                            <a href="{{ route('petugas.grafik-pertumbuhan.show') }}" class="btn-custom-normal">
                                 normal
                             </a>
                         </td>

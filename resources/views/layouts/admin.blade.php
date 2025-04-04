@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('layout/src/assets/css/styles.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/kaiadmin.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/admin_style.css') }}">
     <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 </head>
@@ -28,42 +28,58 @@
                 </div>
                 <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
                     <ul id="sidebarnav">
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('petugas.dashboard') }}" aria-expanded="false">
+                        <li class="sidebar-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                            <a class="sidebar-link" href="{{ route('admin.dashboard') }}" aria-expanded="false">
                                 <span><i class="fas fa-home"></i></span>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {{ request()->routeIs('petugas.data-balita*') ? 'active' : '' }}">
-                            <a class="sidebar-link" href="{{ route('petugas.data-balita') }}">
-                                <span><i class="fas fa-user"></i></span>
-                                <span class="hide-menu">Data Balita</span>
+                        <li class="sidebar-item {{ request()->routeIs('admin.data-puskesmas*') ? 'active' : '' }}">
+                            <a class="sidebar-link" href="{{ route('admin.data-puskesmas') }}">
+                                <span><i class="fas fa-hospital"></i></span>
+                                <span class="hide-menu">Data Puskesmas</span>
                             </a>
                         </li>
-                                    
-                        
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('petugas.data-pengukuran') }}" aria-expanded="false">
-                                <span><i class="icon-chart"></i></span>
-                                <span class="hide-menu">Data Pengukuran</span>
+                        <li class="sidebar-item {{ request()->routeIs('admin.data-posyandu*') ? 'active' : '' }}">
+                            <a class="sidebar-link" href="{{ route('admin.data-posyandu') }}">
+                                <span><i class="fas fa-medkit"></i></span>
+                                <span class="hide-menu">Data Posyandu</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {{ request()->routeIs('petugas.grafik-pertumbuhan*') ? 'active' : '' }}">
-                            <a class="sidebar-link" href="{{ route('petugas.grafik-pertumbuhan') }}" aria-expanded="false">
-                                <span><i class="fas fa-chart-bar"></i></span>
-                                <span class="hide-menu">Grafik Pertumbuhan</span>
+                        <li class="sidebar-item {{ request()->routeIs('admin.data-user*') ? 'active' : '' }}">
+                            <a class="sidebar-link" href="{{ route('admin.data-user') }}">
+                                <span><i class="icon-user"></i></span>
+                                <span class="hide-menu">Data User</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('petugas.hasil-screening') }}" aria-expanded="false">
-                                <span><i class="fas fa-clipboard"></i></span>
-                                <span class="hide-menu">Hasil Screening</span>
+                        <li class="sidebar-item {{ request()->routeIs('admin.data-faktor*') ? 'active' : '' }}">
+                            <a class="sidebar-link" href="{{ route('admin.data-faktor') }}">
+                                <span><i class="fas fa-project-diagram"></i></span>
+                                <span class="hide-menu">Data Faktor Stunting</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('petugas.rekapitulasi') }}" aria-expanded="false">
+                        <li class="sidebar-item {{ request()->routeIs('admin.data-himpunan*') ? 'active' : '' }}">
+                            <a class="sidebar-link" href="{{ route('admin.data-himpunan') }}">
+                                <span><i class="far fa-list-alt"></i></span>
+                                <span class="hide-menu">Data Himpunan Fuzzy</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item {{ request()->routeIs('admin.data-solusi*') ? 'active' : '' }}">
+                            <a class="sidebar-link" href="{{ route('admin.data-solusi') }}">
+                                <span><i class="fas fa-notes-medical"></i></span>
+                                <span class="hide-menu">Data Solusi</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item {{ request()->routeIs('admin.data-aturan*') ? 'active' : '' }}">
+                            <a class="sidebar-link" href="{{ route('admin.data-aturan') }}">
                                 <span><i class="far fa-file-alt"></i></span>
-                                <span class="hide-menu">Rekapitulasi</span>
+                                <span class="hide-menu">Data Aturan</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item {{ request()->routeIs('admin.laporan*') ? 'active' : '' }}">
+                            <a class="sidebar-link" href="{{ route('admin.laporan') }}">
+                                <span><i class="far fa-folder-open"></i></span>
+                                <span class="hide-menu">Laporan</span>
                             </a>
                         </li>
                     </ul>
@@ -80,7 +96,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('petugas.dashboard') }}">
+                            <a href="{{ route('admin.dashboard') }}">
                                 <i class="fas fa-home"></i> 
                             </a>
                         </li>

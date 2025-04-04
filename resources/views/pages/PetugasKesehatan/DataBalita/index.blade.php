@@ -15,7 +15,7 @@
                     <button class="btn btn btn-primary" title="Filter" data-bs-toggle="modal" data-bs-target="#filterModal">
                         <i class="fas fa-filter"></i> FILTER
                     </button>
-                    <a href="{{ route('petugas.databalita.create') }}" class="btn btn-info">
+                    <a href="{{ route('petugas.data-balita.create') }}" class="btn btn-info">
                         <i class="fas fa-plus"></i> TAMBAH
                     </a>
 
@@ -69,7 +69,7 @@
                         <td>Jl. Merdeka No. 123, Jakarta</td>
                         <td>
                             <div class="d-flex gap-2">
-                                <a href="{{ route('petugas.databalita.detail') }}" class="btn btn-primary btn-sm">
+                                <a href="{{ route('petugas.data-balita.show') }}" class="btn btn-primary btn-sm">
                                     <i class="fas fa-eye"></i>
                                 </a>
                                 <a href="#" class="btn btn-warning btn-sm">
@@ -127,7 +127,7 @@
                     </form>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-info" data-bs-dismiss="modal">CANCEL</button>
-                        <button type="button" class="btn btn-primary">CANCEL</button>
+                        <button type="button" class="btn btn-primary">FILTER</button>
                     </div>
                 </div>
             </div>

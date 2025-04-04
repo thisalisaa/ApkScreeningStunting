@@ -3,7 +3,7 @@
 @section('title', 'APK-Screening')
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('petugas.databalita') }}">Data Balita</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('petugas.data-balita') }}">Data Balita</a></li>
     <li class="breadcrumb-item active" aria-current="page">Biodata Balita</li>
 @endsection
 

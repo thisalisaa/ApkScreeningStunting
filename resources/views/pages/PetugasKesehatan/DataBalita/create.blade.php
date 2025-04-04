@@ -4,7 +4,7 @@
 
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('petugas.databalita') }}">Data Balita</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('petugas.data-balita') }}">Data Balita</a></li>
     <li class="breadcrumb-item active" aria-current="page">Tambah Data Balita</li>
 @endsection
 
@@ -36,7 +36,7 @@
     <div class="card-body">
 
         <!-- Form -->
-        <form action="{{ route('petugas.databalita.create') }}" method="POST">
+        <form action="{{ route('petugas.data-balita.create') }}" method="POST">
             @csrf
 
             <!-- Step 1: Data Balita -->

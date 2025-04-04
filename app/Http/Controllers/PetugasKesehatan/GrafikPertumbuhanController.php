@@ -12,9 +12,9 @@ class GrafikPertumbuhanController extends Controller
         return view('pages.PetugasKesehatan.GrafikPertumbuhan.index');
     }
 
-    public function detail()
+    public function show()
     {
-        return view('pages.PetugasKesehatan.GrafikPertumbuhan.detail');
+        return view('pages.PetugasKesehatan.GrafikPertumbuhan.show');
 
     }
 }

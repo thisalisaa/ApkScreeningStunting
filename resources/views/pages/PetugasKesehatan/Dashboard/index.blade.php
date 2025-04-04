@@ -39,13 +39,13 @@
             [
                 'icon' => 'fas fa-user-check', 
                 'color' => 'primary', 
-                'category' => 'Balita Stunting', 
+                'category' => 'Balita Normal', 
                 'value' => '1,303'
             ],
             [
-                'icon' => 'fas fa-luggage-cart', 
+                'icon' => 'fas fa-user-shield', 
                 'color' => 'primary', 
-                'category' => 'Balita Normal', 
+                'category' => 'Balita Stunting', 
                 'value' => '1,345'
             ],
         ];
