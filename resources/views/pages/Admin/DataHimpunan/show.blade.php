@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'APK-Screening')
+@section('title', 'Detail Data Himpunan')
 
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{ route('admin.data-himpunan') }}">Data Himpunan</a></li>
@@ -8,69 +8,75 @@
 @endsection
 
 @section('content')
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <div class="card card-round">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="mb-0 fw-bold">Detail Data Himpunan</h4>
+                        <a href="{{ route('admin.data-himpunan') }}" class="btn btn-info">
+                            <i class="ti ti-arrow-left"></i> CANCEL
+                        </a>
+                    </div>
 
-<div class="card">
-    <div class="card-header">
-        <div class="d-flex justify-content-between align-items-center">
-            <h5 class="card-title fw-semibold mb-0">Detail Data Himpunan</h5>
-            <a href="{{ route('admin.data-himpunan') }}" class="btn btn-info">
-                <i class="ti ti-arrow-left"></i> CANCEL
-            </a>
+                    <hr>
+
+                    <h5 class="fw-bold">Informasi Himpunan</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered bg-light">
+                            <tbody>
+                                <tr>
+                                    <th class="w-50">Faktor Risiko Stunting</th>
+                                    <td>{{ $dataHimpunan->faktor->nama_faktor }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nama Himpunan</th>
+                                    <td>{{ $dataHimpunan->nama_himpunan }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Satuan</th>
+                                    <td>{{ $dataHimpunan->satuan ?? '-' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tipe Fungsi</th>
+                                    <td>{{ ucfirst($dataHimpunan->tipe_fungsi) }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tipe Input</th>
+                                    <td>{{ ucfirst($dataHimpunan->tipe_input) }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h5 class="fw-bold mt-4">Parameter Fungsi</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered bg-light">
+                            <tbody>
+                                <tr>
+                                    <th class="w-50">Batas Bawah</th>
+                                    <td>{{ $dataHimpunan->batas_bawah }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Batas Tengah 1</th>
+                                    <td>{{ $dataHimpunan->batas_tengah1 }}</td>
+                                </tr>
+                                @if($dataHimpunan->tipe_fungsi === 'trapesium')
+                                <tr>
+                                    <th>Batas Tengah 2</th>
+                                    <td>{{ $dataHimpunan->batas_tengah2 }}</td>
+                                </tr>
+                                @endif
+                                <tr>
+                                    <th>Batas Atas</th>
+                                    <td>{{ $dataHimpunan->batas_atas }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
-    <div class="card-body">
-        <div class="row">
-            <!-- Faktor Resiko Display -->
-            <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Faktor Resiko Stunting</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control-plaintext" value="Berat Badan Lahir" readonly>
-                </div>
-            </div>
-
-            <!-- Nama Himpunan Display -->
-            <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Nama Himpunan</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control-plaintext" value="Rendah" readonly>
-                </div>
-            </div>
-
-            <!-- Batas Bawah Display -->
-            <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Batas Bawah</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control-plaintext" value="0.00" readonly>
-                </div>
-            </div>
-
-            <!-- Batas Tengah 1 Display -->
-            <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Batas Tengah 1</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control-plaintext" value="1.50" readonly>
-                </div>
-            </div>
-
-            <!-- Batas Tengah 2 Display -->
-            <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Batas Tengah 2</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control-plaintext" value="2.50" readonly>
-                </div>
-            </div>
-
-            <!-- Batas Atas Display -->
-            <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Batas Atas</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control-plaintext" value="3.00" readonly>
-                </div>
-            </div>
-
-            
-        </div>
-    </div>
-</div>
-
 @endsection

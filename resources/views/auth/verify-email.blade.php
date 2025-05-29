@@ -1,31 +1,15 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
-    </div>
-
-    @if (session('status') == 'verification-link-sent')
-        <div class="mb-4 font-medium text-sm text-green-600">
-            {{ __('A new verification link has been sent to the email address you provided during registration.') }}
-        </div>
-    @endif
-
-    <div class="mt-4 flex items-center justify-between">
-        <form method="POST" action="{{ route('verification.send') }}">
-            @csrf
-
-            <div>
-                <x-primary-button>
-                    {{ __('Resend Verification Email') }}
-                </x-primary-button>
-            </div>
-        </form>
-
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-
-            <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                {{ __('Log Out') }}
-            </button>
-        </form>
-    </div>
-</x-guest-layout>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verifikasi Akun Anda</title>
+</head>
+<body>
+    <h1>Halo {{ $user->nama }}</h1>
+    <p>Terima kasih telah mendaftar. Berikut adalah detail akun Anda:</p>
+    <p><strong>Email:</strong> {{ $user->email }}</p>
+    <p><strong>Password:</strong> Silakan login menggunakan password yang telah ditetapkan saat pendaftaran. Anda dapat mengubahnya setelah login pertama kali.</p>
+    <p>Untuk melanjutkan, silakan klik tombol di bawah ini untuk memverifikasi akun Anda dengan memasukkan kode verifikasi yang terlampir di email ini:</p>
+    <p><a href="{{ route('verify.page', ['token' => $user->verification_token]) }}" style="background-color: #1fab89; color: white; padding: 10px 20px; text-decoration: none;">Verifikasi Akun</a></p>
+    <p>Token ini berlaku selama 24 jam. Jika Anda tidak melakukan pendaftaran ini, silakan abaikan email ini.</p>
+</body>
+</html>

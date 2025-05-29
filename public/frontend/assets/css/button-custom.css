@@ -1,0 +1,71 @@
+/* custom-buttons.css */
+
+/* Gaya dasar tombol custom */
+.btn-custom-green,
+.btn-custom-orange,
+.btn-custom-red,
+.btn-custom-yellow {
+    display: inline-block;
+    padding: 8px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    width: 120px;
+    cursor: pointer;
+    color: white !important;
+    text-decoration: none !important;
+    transition: background-color 0.3s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Tombol Hijau */
+.btn-custom-green {
+    background-color: #92C755;
+}
+.btn-custom-green:hover,
+.btn-custom-green:focus,
+.btn-custom-green:active {
+    background-color: #7bad44;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+/* Tombol Oranye */
+.btn-custom-orange {
+    background-color: #FFB80F;
+}
+.btn-custom-orange:hover,
+.btn-custom-orange:focus,
+.btn-custom-orange:active {
+    background-color: #cc970c;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+/* Tombol Merah */
+.btn-custom-red {
+    background-color: #F55145;
+}
+.btn-custom-red:hover,
+.btn-custom-red:focus,
+.btn-custom-red:active {
+    background-color: #d64037;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+/* Tombol Biru */
+.btn-custom-yellow {
+    background-color: #4cb0e6;
+}
+.btn-custom-yellow:hover,
+.btn-custom-yellow:focus,
+.btn-custom-yellow:active {
+    background-color: #3992c0;
+    color: white !important;
+    text-decoration: none !important;
+}

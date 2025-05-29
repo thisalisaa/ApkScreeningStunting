@@ -13,37 +13,38 @@
                 <div class="card-title">Data Faktor Stunting</div>
                 <div>
                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#tambahFaktorModal">
-                        <i class="fas fa-plus"></i> TAMBAH 
+                        <i class="fas fa-plus"></i> TAMBAH
                     </button>
                 </div>
             </div>
         </div>
         <div class="card-body">
-            <!-- Filter dan Search -->
-            <div class="mb-3 d-flex justify-content-between align-items-center">
-                <!-- Dropdown Show Entries -->
+            <!-- Drop down perpage dan Search -->
+            <form method="GET" action="{{ route('admin.data-faktor') }}"
+                class="mb-3 d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
-                    <label for="showEntries" class="me-2">Show</label>
-                    <select class="form-select form-select-sm w-auto" id="showEntries">
-                        <option value="5">5</option>
-                        <option value="10" selected>10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
+                    <label for="show" class="me-2">Show</label>
+                    <select class="form-select form-select-sm w-auto" name="show" id="show"
+                        onchange="this.form.submit()">
+                        <option value="5" {{ request('show') == 5 ? 'selected' : '' }}>5</option>
+                        <option value="10" {{ request('show') == 10 ? 'selected' : '' }}>10</option>
+                        <option value="25" {{ request('show') == 25 ? 'selected' : '' }}>25</option>
+                        <option value="50" {{ request('show') == 50 ? 'selected' : '' }}>50</option>
+                        <option value="100" {{ request('show') == 100 ? 'selected' : '' }}>100</option>
                     </select>
                     <span class="ms-2">entries</span>
                 </div>
 
-                <!-- Search Input -->
                 <div class="input-group w-25">
-                    <input type="text" id="searchInput" class="form-control" placeholder="Cari...">
-                    <button class="btn btn-info" type="button" id="searchButton">
+                    <input type="text" name="search" value="{{ request('search') }}" class="form-control"
+                        placeholder="Cari...">
+                    <button class="btn btn-info" type="submit">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
-            </div>
+            </form>
 
-            <!-- Tabel Data Faktor -->
+
             <div class="table-responsive">
                 <table class="table table-striped table-hover">
                     <thead class="table-light">
@@ -55,114 +56,45 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>FR001</td>
-                            <td>Berat Badan Lahir Rendah</td>
-                            <td>
-                                <div class="d-flex gap-2">
-                                    <button class="btn btn-warning btn-sm edit-faktor" 
-                                        data-bs-toggle="modal" 
-                                        data-bs-target="#editFaktorModal"
-                                        data-id="1"
-                                        data-kode="FR001"
-                                        data-nama="Berat Badan Lahir Rendah (<2500 gram)">
+                        @forelse ($faktor as $index => $daftarfaktor)
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $daftarfaktor->kode_faktor }}</td>
+                                <td>{{ $daftarfaktor->nama_faktor }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning btn-sm btn-edit-faktor"
+                                        data-id="{{ $daftarfaktor->id }}" data-kode="{{ $daftarfaktor->kode_faktor }}"
+                                        data-nama="{{ $daftarfaktor->nama_faktor }}" data-bs-toggle="modal"
+                                        data-bs-target="#editFaktorModal">
                                         <i class="fas fa-edit text-white"></i>
                                     </button>
-                                    <button class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>FR002</td>
-                            <td>ASI Eksklusif</td>
-                            <td>
-                                <div class="d-flex gap-2">
-                                    <button class="btn btn-warning btn-sm edit-faktor"
-                                        data-bs-toggle="modal" 
-                                        data-bs-target="#editFaktorModal"
-                                        data-id="2"
-                                        data-kode="FR002"
-                                        data-nama="Tidak Mendapat ASI Eksklusif">
-                                        <i class="fas fa-edit text-white"></i>
-                                    </button>
-                                    <button class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>FR003</td>
-                            <td>Pengetahuan Ibu</td>
-                            <td>
-                                <div class="d-flex gap-2">
-                                    <button class="btn btn-warning btn-sm edit-faktor"
-                                        data-bs-toggle="modal" 
-                                        data-bs-target="#editFaktorModal"
-                                        data-id="3"
-                                        data-kode="FR003"
-                                        data-nama="Pengetahuan Ibu tentang Gizi Rendah">
-                                        <i class="fas fa-edit text-white"></i>
-                                    </button>
-                                    <button class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>FR004</td>
-                            <td>Pendapatan Keluarga</td>
-                            <td>
-                                <div class="d-flex gap-2">
-                                    <button class="btn btn-warning btn-sm edit-faktor"
-                                        data-bs-toggle="modal" 
-                                        data-bs-target="#editFaktorModal"
-                                        data-id="4"
-                                        data-kode="FR004"
-                                        data-nama="Pendapatan Keluarga < Rp2.000.000/bulan">
-                                        <i class="fas fa-edit text-white"></i>
-                                    </button>
-                                    <button class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>FR005</td>
-                            <td>Nilai Z-Score</td>
-                            <td>
-                                <div class="d-flex gap-2">
-                                    <button class="btn btn-warning btn-sm edit-faktor"
-                                        data-bs-toggle="modal" 
-                                        data-bs-target="#editFaktorModal"
-                                        data-id="4"
-                                        data-kode="FR004"
-                                        data-nama="Nilai Z-Score">
-                                        <i class="fas fa-edit text-white"></i>
-                                    </button>
-                                    <button class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
+                                    <form action="{{ route('admin.data-faktor.destroy', $daftarfaktor->id) }}"
+                                        method="POST" class="d-inline form-hapus">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" class="btn btn-sm btn-danger btn-hapus"
+                                            data-nama="{{ $daftarfaktor->nama_faktor }}">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="text-center">No data available in table.</td>
+                            </tr>
+                        @endforelse
                     </tbody>
+
                 </table>
             </div>
 
             <!-- Info Pagination -->
             <div class="mt-3">
-                Showing <span>1</span> to <span>4</span> of <span>4</span> entries
+                Showing <span>{{ $faktor->firstItem() }}</span> to <span>{{ $faktor->lastItem() }}</span> of
+                <span>{{ $faktor->total() }}</span> entries
             </div>
+
 
             <!-- Pagination -->
             <nav aria-label="Page navigation">
@@ -181,83 +113,39 @@
         </div>
     </div>
 
-    <!-- Modal Tambah Faktor -->
-    <div class="modal fade" id="tambahFaktorModal" tabindex="-1" aria-labelledby="tambahFaktorModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tambahFaktorModalLabel">Tambah Faktor Resiko</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form>
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="kode_faktor" class="form-label">Kode Faktor</label>
-                            <input type="text" class="form-control" id="kode_faktor" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="nama_faktor" class="form-label">Nama Faktor</label>
-                            <input type="text" class="form-control" id="nama_faktor" required>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-info" data-bs-dismiss="modal">CANCEL</button>
-                        <button type="button" class="btn btn-success">SIMPAN</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    @include('pages.Admin.DataFaktor.create')
+    @include('pages.Admin.DataFaktor.edit')
 
-    <!-- Modal Edit Faktor -->
-    <div class="modal fade" id="editFaktorModal" tabindex="-1" aria-labelledby="editFaktorModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editFaktorModalLabel">Edit Faktor Resiko</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form>
-                    <div class="modal-body">
-                        <input type="hidden" id="edit_id">
-                        <div class="mb-3">
-                            <label for="edit_kode_faktor" class="form-label">Kode Faktor</label>
-                            <input type="text" class="form-control" id="edit_kode_faktor" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="edit_nama_faktor" class="form-label">Nama Faktor</label>
-                            <input type="text" class="form-control" id="edit_nama_faktor" required>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-info" data-bs-dismiss="modal">CANCEL</button>
-                        <button type="button" class="btn btn-warning text-white">UPDATE</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
 @endsection
 
-@push('scripts')
-<script>
-    $(document).ready(function() {
-        // Handle edit button click
-        $('.edit-faktor').click(function() {
-            var id = $(this).data('id');
-            var kode = $(this).data('kode');
-            var nama = $(this).data('nama');
-            
-            $('#edit_id').val(id);
-            $('#edit_kode_faktor').val(kode);
-            $('#edit_nama_faktor').val(nama);
-        });
 
-        // Reset form tambah saat modal ditutup
-        $('#tambahFaktorModal').on('hidden.bs.modal', function() {
-            $(this).find('form')[0].reset();
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hapusButtons = document.querySelectorAll('.btn-hapus');
+
+            hapusButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const form = this.closest('.form-hapus');
+                    const nama = this.getAttribute('data-nama');
+
+                    Swal.fire({
+                        title: `Hapus data faktor?`,
+                        text: `Faktor "${nama}" akan dihapus secara permanen.`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Hapus',
+                        cancelButtonText: 'Batal'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                });
+            });
         });
-    });
-</script>
+    </script>
 @endpush

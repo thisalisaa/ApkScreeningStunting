@@ -39,65 +39,35 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead class="table-light">
+                <table class="table table-striped mt-3">
+                    <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kode Posyandu</th>
                             <th>Nama Posyandu</th>
-                            <th>Desa</th>
                             <th>Puskesmas</th>
+                            <th>Kecamatan</th>
+                            <th>Desa</th> 
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Sample Data -->
-                        <tr>
-                            <td>1</td>
-                            <td>PYD001</td>
-                            <td>Posyandu Melati</td>
-                            <td>Lohbener</td>
-                            <td>Puskesmas Lohbener</td>
-                            <td>
-                                <a href="#" class="btn btn-warning btn-sm" title="Edit">
-                                    <i class="fas fa-edit text-white"></i>
-                                </a>
-                                <a href="#" class="btn btn-sm btn-danger">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>PYD002</td>
-                            <td>Posyandu Mawar</td>
-                            <td>Segeran</td>
-                            <td>Puskesmas Lohbener</td>
-                            <td>
-                                <a href="#" class="btn btn-warning btn-sm" title="Edit">
-                                    <i class="fas fa-edit text-white"></i>
-                                </a>
-                                <a href="#" class="btn btn-sm btn-danger">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>PYD003</td>
-                            <td>Posyandu Anggrek</td>
-                            <td>Indramayu</td>
-                            <td>Puskesmas Indramayu</td>
-                            <td>
-                                <a href="#" class="btn btn-warning btn-sm" title="Edit">
-                                    <i class="fas fa-edit text-white"></i>
-                                </a>
-                                <a href="#" class="btn btn-sm btn-danger">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <!-- Add more rows as needed -->
+                        @foreach($posyandus as $index => $dataposyandu)
+                    <tr>
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $dataposyandu->nama_posyandu }}</td>
+                        <td>{{ $dataposyandu->puskesmas->nama_puskesmas}}</td>
+                        <td>{{ $dataposyandu->kecamatan->name ?? 'Tidak ada kecamatan' }}</td>
+                        <td>{{ $dataposyandu->desa->name ?? 'Tidak ada desa' }}</td>
+                        <td>
+                            <a href="#" class="btn btn-warning btn-sm">
+                                <i class="fas fa-edit text-white"></i>
+                            </a>
+                            <a href="#" class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
                     </tbody>
                 </table>
             </div>

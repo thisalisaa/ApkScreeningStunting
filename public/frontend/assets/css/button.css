@@ -1,0 +1,61 @@
+.btn-custom-green {
+    display: inline-block; /* Agar elemen <a> bisa di-styling seperti tombol */
+    background-color: #92C755; /* Warna hijau cerah */
+    color: white; /* Warna teks putih */
+    padding: 8px 20px; /* Padding atas-bawah 8px, kiri-kanan 20px */
+    font-size: 14px; /* Ukuran font */
+    border: none; /* Hilangkan border */
+    border-radius: 5px; /* Sudut melengkung */
+    text-align: center; /* Teks di tengah */
+    text-decoration: none; /* Hilangkan underline default pada <a> */
+    cursor: pointer; /* Ubah kursor saat dihover */
+    width: 120px; /* Lebar tombol */
+}
+
+
+.btn-custom-orange {
+    display: inline-block; /* Agar elemen <a> bisa di-styling seperti tombol */
+    background-color: #FFB80F; /* Warna oranye */
+    color: white; /* Warna teks putih */
+    padding: 8px 20px; /* Padding atas-bawah 8px, kiri-kanan 20px */
+    font-size: 14px; /* Ukuran font */
+    border: none; /* Hilangkan border */
+    border-radius: 5px; /* Sudut melengkung */
+    text-align: center; /* Teks di tengah */
+    text-decoration: none; /* Hilangkan underline default pada <a> */
+    cursor: pointer; /* Ubah kursor saat dihover */
+    width: 120px; /* Lebar tombol */
+    transition: background-color 0.3s ease; /* Efek transisi saat dihover */
+}
+
+
+.btn-custom-red {
+    display: inline-block; /* Agar elemen <a> bisa di-styling seperti tombol */
+    background-color: #F55145; /* Warna merah */
+    color: white; /* Warna teks putih */
+    padding: 8px 20px; /* Padding atas-bawah 8px, kiri-kanan 20px */
+    font-size: 14px; /* Ukuran font */
+    border: none; /* Hilangkan border */
+    border-radius: 5px; /* Sudut melengkung */
+    text-align: center; /* Teks di tengah */
+    text-decoration: none; /* Hilangkan underline default pada <a> */
+    cursor: pointer; /* Ubah kursor saat dihover */
+    width: 120px; /* Lebar tombol */
+    transition: background-color 0.3s ease; /* Efek transisi saat dihover */
+}
+
+.btn-custom-yellow {
+    display: inline-block; /* Agar elemen <a> bisa di-styling seperti tombol */
+    background-color: #4cb0e6; /* Warna merah */
+    color: white; /* Warna teks putih */
+    padding: 8px 20px; /* Padding atas-bawah 8px, kiri-kanan 20px */
+    font-size: 14px; /* Ukuran font */
+    border: none; /* Hilangkan border */
+    border-radius: 5px; /* Sudut melengkung */
+    text-align: center; /* Teks di tengah */
+    text-decoration: none; /* Hilangkan underline default pada <a> */
+    cursor: pointer; /* Ubah kursor saat dihover */
+    width: 120px; /* Lebar tombol */
+    transition: background-color 0.3s ease; /* Efek transisi saat dihover */
+}
+

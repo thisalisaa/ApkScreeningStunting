@@ -1,0 +1,46 @@
+.stepper {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.stepper-progress {
+    height: 4px;
+    background-color: #e9ecef;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.stepper-progress-bar {
+    height: 100%;
+    background-color: #0d6efd;
+    transition: width 0.3s ease;
+}
+
+.stepper-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.stepper-nav-item {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #6c757d;
+    cursor: pointer;
+    position: relative;
+}
+
+.stepper-nav-item.active {
+    color: #0d6efd;
+    font-weight: bold;
+}
+
+.stepper-step {
+    display: none;
+}
+
+.stepper-step.active {
+    display: block;
+}

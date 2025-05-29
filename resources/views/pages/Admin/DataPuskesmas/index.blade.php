@@ -12,9 +12,9 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="card-title">Data Puskesmas</div>
                 <div>
-                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#tambahPuskesmasModal">
-                        <i class="fas fa-plus"></i> TAMBAH
-                    </button>
+                    <a href="{{ route('admin.data-puskesmas.create') }}" class="btn btn-info">
+                    <i class="fas fa-plus me-1"></i> TAMBAH
+                </a>
                 </div>
             </div>
         </div>
@@ -44,31 +44,40 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Kode Puskesmas</th>
                         <th>Nama Puskesmas</th>
                         <th>Kecamatan</th>
-                        <th>Desa</th> 
+                        <th>Desa</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>PKM001</td>
-                        <td>Puskesmas Lohbener</td>
-                        <td>Lohbener</td>
-                        <td>Lohbener</td>
-                        <td>
-                            <div class="d-flex gap-2">
-                                <a href="#" class="btn btn-warning btn-sm">
+                    @foreach ($puskesmas as $index => $datapuskesmas)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $datapuskesmas->nama_puskesmas }}</td>
+                            <td>{{ $datapuskesmas->kecamatan->name ?? 'Tidak ada kecamatan' }}</td>
+                            <td>{{ $datapuskesmas->desa->name ?? 'Tidak ada desa' }}</td>
+                            <td>
+                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#editPuskesmasModal{{ $datapuskesmas->id }}">
                                     <i class="fas fa-edit text-white"></i>
-                                </a>
-                                <a href="#" class="btn btn-sm btn-danger">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
+                                </button>
+                                <form action="{{ route('admin.data-puskesmas.destroy', $datapuskesmas->id) }}"
+                                    method="POST" style="display:inline;"
+                                    onsubmit="return confirm('Yakin ingin menghapus data ini?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        @include('pages.Admin.DataPuskesmas.edit', [
+                            'datapuskesmas' => $datapuskesmas,
+                            'kecamatans' => $kecamatans,
+                        ])
+                    @endforeach
                 </tbody>
             </table>
             <div class="mt-3">
@@ -92,87 +101,4 @@
         </div>
     </div>
 
-    <div class="modal fade" id="tambahPuskesmasModal" tabindex="-1" aria-labelledby="tambahPuskesmasModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tambahPuskesmasModalLabel">Tambah Data Puskesmas</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="formTambahPuskesmas">
-                        <div class="mb-3">
-                            <label for="kodePuskesmas" class="form-label">Kode Puskesmas</label>
-                            <input type="text" class="form-control" id="kodePuskesmas" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="namaPuskesmas" class="form-label">Nama Puskesmas</label>
-                            <input type="text" class="form-control" id="namaPuskesmas" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="kecamatan" class="form-label">Kecamatan</label>
-                            <select class="form-select" id="kecamatan" required>
-                                <option value="" selected disabled>Pilih Kecamatan</option>
-                                <option value="Lohbener">Lohbener</option>
-                                <option value="Indramayu">Indramayu</option>
-                                <option value="Jatibarang">Jatibarang</option>
-                                <option value="Kandanghaur">Kandanghaur</option>
-                                <option value="Sliyeg">Sliyeg</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="desa" class="form-label">Desa</label>
-                            <select class="form-select" id="desa" required>
-                                <option value="" selected disabled>Pilih Desa</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-bs-dismiss="modal">CANCEL</button>
-                    <button type="button" class="btn btn-success" id="simpanPuskesmas">SIMPAN</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 @endsection
-
-@push('scripts')
-<script>
-    $(document).ready(function() {
-        const desaByKecamatan = {
-            'Lohbener': ['Lohbener', 'Segeran', 'Segeran Kidul', 'Waru', 'Anjatan'],
-            'Indramayu': ['Indramayu', 'Pabean Udik', 'Dukuh', 'Karangsong', 'Lemahabang'],
-            'Jatibarang': ['Jatibarang', 'Bulak', 'Jatibarang Baru', 'Kebulen', 'Pawidean'],
-            'Kandanghaur': ['Kandanghaur', 'Brondong', 'Soge', 'Karanganyar', 'Sleman'],
-            'Sliyeg': ['Sliyeg', 'Gadingan', 'Longok', 'Majasari', 'Majasih']
-        };
-
-        $('#kecamatan').change(function() {
-            const selectedKecamatan = $(this).val();
-            const desaDropdown = $('#desa');
-            
-            desaDropdown.empty();
-            desaDropdown.append('<option value="" selected disabled>Pilih Desa</option>');
-            
-            if (selectedKecamatan && desaByKecamatan[selectedKecamatan]) {
-                desaByKecamatan[selectedKecamatan].forEach(function(desa) {
-                    desaDropdown.append(`<option value="${desa}">${desa}</option>`);
-                });
-            }
-        });
-
-        $('#simpanPuskesmas').click(function() {
-            if ($('#formTambahPuskesmas')[0].checkValidity()) {
-                alert('Data puskesmas berhasil disimpan!');
-                $('#tambahPuskesmasModal').modal('hide');
-                $('#formTambahPuskesmas')[0].reset();
-                $('#desa').empty().append('<option value="" selected disabled>Pilih Desa</option>');
-            } else {
-                $('#formTambahPuskesmas')[0].reportValidity();
-            }
-        });
-    });
-</script>
-@endpush
